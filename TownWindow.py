@@ -168,6 +168,7 @@ class TownWindow (arcade.Window):
         self.playerhp = 10
         self.max_health = max_health
         self.cur_health = max_health
+        self.enomys = 4
         self.fire_sound = arcade.load_sound(":resources:sounds/hurt3.wav")
         self.mfire_sound = arcade.load_sound(":resources:sounds/explosion2.wav")
         self.playerwalk_sound = arcade.load_sound(":resources:sounds/jump5.wav")
@@ -328,6 +329,8 @@ class TownWindow (arcade.Window):
 
 
     def update(self, delta_time: float):
+        if self.enomys == 0:
+            sys.exit()
         #updates the srpites and tecters
         self.simple_physics.update()
         self.simple_physic.update()
@@ -405,6 +408,7 @@ class TownWindow (arcade.Window):
                     else:
                         self.run.cur_health += 5
                     mouse.center_x = 1000
+                    self.enomys -= 1
             for mouse in self.all_sprites_list2:
                 #self.mouse_sprite = self.temp
                 self.all_sprites_list2.update()
@@ -426,6 +430,7 @@ class TownWindow (arcade.Window):
                     else:
                         self.run.cur_health += 5
                     mouse.center_x = 1000
+                    self.enomys -= 1
                     #self.frog.center_y = 5000
         if self.current_scene == self.woods2:
             for mush in self.mush_list:
@@ -449,6 +454,7 @@ class TownWindow (arcade.Window):
                     else:
                         self.run.cur_health += 5
                     mush.center_x = 1000
+                    self.enomys -= 1
 
             for frog in self.frog_list:
                 self.frog_list.update()
@@ -470,6 +476,7 @@ class TownWindow (arcade.Window):
                     else:
                         self.run.cur_health += 5
                     frog.center_x = 1000
+                    self.enomys -= 1
 
 # chages scean
         if self.current_scene == self.mapscene1:
