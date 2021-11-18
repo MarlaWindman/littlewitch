@@ -13,5 +13,5 @@ and when anything gets hit it makes a sound making is 8.
 heath is the good stuff go up to get to the map 2 and left to get to map 3.
 eomrys can go teow the wall layers. makes so they done get stuck.
 the statist the player can improve is how many emonys are left if they kill them they are gone.
-player shots with the mouse
+player shots with the mouse.
 the attack animation only works if you are not moving
