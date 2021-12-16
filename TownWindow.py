@@ -60,18 +60,18 @@ class enomy(arcade.AnimatedTimeBasedSprite):
             #self.center_y = 700
             self.max_health = max_health
             self.cur_health = max_health
-        def move(self,run):
+        def move(self,run,wall_list2):
            # flame = pathlib.Path.cwd() / 'Assets' / 'flames'
 #@#            arcade.play_sound(self.mouse_sprite_sound)
-           if arcade.get_distance_between_sprites(self, run) < 500:
-               if self.center_y < run.center_y:
+           if arcade.get_distance_between_sprites(self, run,) < 500:
+               if self.center_y < run.center_y and self.center_y != wall_list:
                    self.center_y += min(SPRITE_SPEED, run.center_y - self.center_y)
                    print(min(SPRITE_SPEED, run.center_y - self.center_y))
-               elif self.center_y > run.center_y:
+               elif self.center_y > run.center_y and self.center_y != wall_list:
                    self.center_y -= min(SPRITE_SPEED, self.center_y - run.center_y)
-               if self.center_x < run.center_x:
+               if self.center_x < run.center_x and self.center_x != wall_list:
                    self.center_x += min(SPRITE_SPEED, run.center_x - self.center_x)
-               elif self.center_x > run.center_x:
+               elif self.center_x > run.center_x and self.center_x != wall_list:
                    self.center_x -= min(SPRITE_SPEED, self.center_x - run.center_x)
         def move2(self,run):
 #            arcade.play_sound(self.mouse_sprite_sound)
@@ -394,7 +394,7 @@ class TownWindow (arcade.Window):
             for mouse in self.all_sprites_list:
                 self.all_sprites_list.update()
                 self.all_sprites_list.update_animation()
-                self.mouse_sprite.move(self.run)
+                self.mouse_sprite.move(self.run,self.wall_list2)
                 if self.mouse_sprite.cur_health <= 0:
                     arcade.play_sound(self.mouse_sprite_sound)
                     mouse.remove_from_sprite_lists()
@@ -462,7 +462,7 @@ class TownWindow (arcade.Window):
             for frog in self.frog_list:
                 self.frog_list.update()
                 self.frog_list.update_animation()
-                self.frog.move(self.run)
+                self.frog.move(self.run,self.wall_list)
                 if self.frog.cur_health <= 0:
                     frog.remove_from_sprite_lists()
                     arcade.play_sound(self.frog_sound)
