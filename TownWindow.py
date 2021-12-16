@@ -1,7 +1,6 @@
 #Marla Windman
 
 import sys
-
 import arcade
 import pathlib
 import arcade.gui
@@ -64,16 +63,16 @@ class enomy(arcade.AnimatedTimeBasedSprite):
         def move(self,run):
            # flame = pathlib.Path.cwd() / 'Assets' / 'flames'
 #@#            arcade.play_sound(self.mouse_sprite_sound)
-            if arcade.get_distance_between_sprites(self,run) < 300:
-                if self.center_y < run.center_y:
-                    self.center_y += min(SPRITE_SPEED, run.center_y - self.center_y)
-                    print(min(SPRITE_SPEED, run.center_y - self.center_y))
-                elif self.center_y > run.center_y:
-                    self.center_y -= min(SPRITE_SPEED, self.center_y - run.center_y)
-                if self.center_x < run.center_x:
-                    self.center_x += min(SPRITE_SPEED, run.center_x - self.center_x)
-                elif self.center_x > run.center_x:
-                    self.center_x -= min(SPRITE_SPEED, self.center_x - run.center_x)
+           if arcade.get_distance_between_sprites(self, run) < 500:
+               if self.center_y < run.center_y:
+                   self.center_y += min(SPRITE_SPEED, run.center_y - self.center_y)
+                   print(min(SPRITE_SPEED, run.center_y - self.center_y))
+               elif self.center_y > run.center_y:
+                   self.center_y -= min(SPRITE_SPEED, self.center_y - run.center_y)
+               if self.center_x < run.center_x:
+                   self.center_x += min(SPRITE_SPEED, run.center_x - self.center_x)
+               elif self.center_x > run.center_x:
+                   self.center_x -= min(SPRITE_SPEED, self.center_x - run.center_x)
         def move2(self,run):
 #            arcade.play_sound(self.mouse_sprite_sound)
            # flame = pathlib.Path.cwd() / 'Assets' / 'flames'
@@ -179,9 +178,10 @@ class TownWindow (arcade.Window):
         self.hit_sound = arcade.load_sound(":resources:sounds/lose4.wav")
 
 
+
 #gets everything read to be drawen. for exaple gets the texteres for srpits and makes then also makes the map
     def setup(self):
-       run = pathlib.Path.cwd() / 'Assets' / 'run'
+       run = pathlib.Path.cwd() / 'Assets' / 'Run'
        path2 = pathlib.Path.cwd() / 'Assets' / 'mayaStand.png'
        fox = pathlib.Path.cwd() / 'Assets' / 'foxidle'
        frog = pathlib.Path.cwd() / 'Assets' / 'rzabba'
@@ -318,6 +318,7 @@ class TownWindow (arcade.Window):
                    mushroom_frame.append(frame)
 
 
+
        self.Mushroom.frames = mushroom_frame
        self.mouse_sprite.frames = mouse_frames
        self.mouse_sprite2.frames = mouse_frames2
@@ -397,7 +398,9 @@ class TownWindow (arcade.Window):
                 if self.mouse_sprite.cur_health <= 0:
                     arcade.play_sound(self.mouse_sprite_sound)
                     mouse.remove_from_sprite_lists()
-                    if self.run.cur_health == 79:
+                    if self.run.cur_health == 80:
+                        self.run.cur_health += 0
+                    elif self.run.cur_health == 79:
                         self.run.cur_health += 1
                     elif self.run.cur_health == 78:
                         self.run.cur_health += 2
