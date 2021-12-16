@@ -15,3 +15,5 @@ eomrys can go teow the wall layers. makes so they done get stuck.
 the statist the player can improve is how many emonys are left if they kill them they are gone.
 player shots with the mouse.
 the attack animation only works if you are not moving
+Changed run to Run
+I think the move functions count as sourching.
